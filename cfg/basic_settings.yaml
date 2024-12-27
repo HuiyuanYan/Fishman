@@ -1,0 +1,8 @@
+name: "Fishman"
+version: "v0.0.1"
+level_number: 4
+background_image_path: "fishman.png"
+window_x: 100
+window_y: 100
+window_width: 1024
+window_height: 768

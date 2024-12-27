@@ -1,0 +1,60 @@
+sky:
+  weight: 1
+  image_path: "sky.png"
+sea:
+  weight: 2
+  image_path: "sea.png"
+dead_fish:
+  image_path: "dead_fish.png"
+  size:
+    width: 30
+    height: 20
+caught_fish:
+  image_path: "caught_fish.png"
+  size:
+    width: 20
+    height: 20
+
+shore:
+  image_path: "shore.png"
+  size:
+    width: 50
+    height: 50
+
+
+fish_setting:
+  Shark:
+    num: 1
+    name: "鲨鱼"
+    image_path: "shark.png"
+    speed: 0.5
+    attack: 8
+    health: 100
+    value: 10
+    size:
+      width: 250
+      height: 250
+  Tuna:
+    num: 0
+    name: "龙鱼"
+    image_path: "tuna.png"
+    speed: 1
+    attack: 3
+    health: 5
+    value: 20
+    size:
+      width: 50
+      height: 50
+  Goldfish:
+    num: 0
+    name: "金鱼"
+    image_path: "goldfish.png"
+    speed: 0.2
+    attack: 0
+    health: 5
+    value: 5
+    size:
+      width: 25
+      height: 25
+timeout: 120
+target: 10

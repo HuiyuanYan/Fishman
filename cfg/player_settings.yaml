@@ -1,0 +1,31 @@
+health: 5
+gold: 100
+fishnet_num: 5
+harpoon_num: 5
+
+boat:
+  name: "小船"
+  image_path: "boat.png"
+  speed: 1
+  size:
+    width: 50
+    height: 50
+
+fishnet:
+  name: "鱼网"
+  image_path: "fishnet.png"
+  capacity: 3
+  speed: 1
+  attack: 5
+  size:
+    width: 60
+    height: 60
+
+harpoon:
+  name: "鱼叉"
+  image_path: "harpoon.png"
+  speed: 1
+  attack: 5
+  size:
+    width: 60
+    height: 30
