@@ -6,8 +6,6 @@
 ![python badge](https://img.shields.io/badge/豆包-协助开发-orange)
 
 
-图像size变为50%
-
 
 ![](./assets/logo.png)
 ## 1. 环境安装
