@@ -2,35 +2,45 @@ import pygame
 import math
 from PIL import Image, ImageSequence
 import random
-class ImageRender:
+
+# 定义一个BasicRender基类
+class BasicRender:
+    def __init__(self, x, y, width, height):
+        self.x = x
+        self.y = y
+        self.width = width
+        self.height = height
+    
+    def render(self, screen):
+        raise NotImplementedError("Subclasses must implement the render method.")
+
+
+class ImageRender(BasicRender):
     def __init__(
         self,
-        image_path,
         x,
         y,
         width,
-        height
+        height,
+        image_path
     ):
-        # 加载图像资源
-        self.x = x
-        self.y = y
+        super().__init__(x, y, width, height)
         self.image = pygame.image.load(image_path)
         self.image = pygame.transform.scale(self.image, (width, height))
 
     def render(self,screen):
         screen.blit(self.image, (self.x, self.y))
 
-class GIFRender:
+class GIFRender(BasicRender):
     def __init__(self,
-        gif_path,
         x,
         y,
         width,
         height,
+        gif_path,
         FPS=30
     ):
-        self.x = x
-        self.y = y
+        super().__init__(x, y, width, height)
         self.FPS = FPS
         self.frames = []
         self.frame_index = 0
@@ -66,7 +76,7 @@ class GIFRender:
         frame = self.frames[self.frame_index]
         screen.blit(frame, (self.x, self.y))
 
-class SolidColorRender:
+class SolidColorRender(BasicRender):
     def __init__(self,
         x,
         y,
@@ -74,11 +84,9 @@ class SolidColorRender:
         height,
         color = None
     ):
+        super().__init__(x, y, width, height)
+
         # 如果为none，则随机一种颜色
-        self.x = x
-        self.y = y
-        self.width = width
-        self.height = height
         if color is None:
             self.color = (random.randint(0, 255), random.randint(0, 255), random.randint(0, 255))
         else:
@@ -99,11 +107,11 @@ class BackgroundRender:
         **kwargs
     ):
         if render_type == "image":
-            self.renderer = ImageRender(kwargs.get("image_path"),x,y,width,height)
+            self.renderer = ImageRender(x,y,width,height,kwargs.get("image_path"))
         elif render_type == "gif":
-            self.renderer = GIFRender(kwargs.get("gif_path"),x,y,width,height,FPS=20)
+            self.renderer = GIFRender(x,y,width,height,kwargs.get("gif_path"),FPS=20)
         elif render_type == "solid":
-            self.renderer = SolidColorRender(kwargs.get("color",None))
+            self.renderer = SolidColorRender(x,y,width,height,kwargs.get("color",None))
         else:
             raise ValueError("Unsupported render type")
 
